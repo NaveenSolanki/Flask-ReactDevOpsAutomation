@@ -1,0 +1,107 @@
+.upload-params-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e7eaff8a;
+}
+
+.upload-params-h2 {
+    color: #333;
+}
+
+.upload-params-form {
+    margin-bottom: 20px;
+}
+
+.upload-params-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.upload-params-input,
+.upload-params-select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.upload-params-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.upload-params-button:hover {
+    background-color: #0056b3;
+}
+
+.upload-params-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.upload-params-loading img {
+    width: 50px;
+    height: 50px;
+}
+
+.upload-params-long-light-bg {
+    background-color: #b6fffa;
+}
+.upload-params-short-light-bg {
+    background-color: #e1c3ff;
+}
+.upload-params-neutral-light-bg {
+    background-color: #c1ffb6;
+}
+
+.upload-params-component {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.upload-params-full-width {
+    width: 100%;
+}
+
+.flash-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #2fad66;
+    color: #fff;
+    border-radius: 5px;
+    animation: fadeOut 5s ease;
+}
+
+/* Success message styles */
+.success-message {
+    background-color: #28a745; /* Green background for success */
+    color: #fff;
+}
+
+/* Failure message styles */
+.failure-message {
+    background-color: #dc3545; /* Red background for failure */
+    color: #fff;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradify</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+        h1 {
+            margin: 0;
+            padding: 20px 0;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            background-color: #00e1ff;
+        }
+        #historical_performance{
+            margin: 0;
+            font-weight: bold;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            background-color: #41dc9b;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2{
+            font-weight: bold;
+            border-top: 2px solid #ccc;
+            border-bottom: 2px solid #ccc;
+            padding: 10px 0;
+            color: #414141;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);    
+            background-color: #c6c6c6;
+        }
+        form {
+            max-width: 600px;
+            margin: 5px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input[type="date"], button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border: 1px solid #2e2e2e;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #2e2e2e;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(odd) {
+            background-color: #eae8e8;
+        }
+        tr:hover {
+            background-color: #a29f9f;
+        }
+
+        .chartForDay{
+            position: absolute;
+            top: 660px;
+            left: 600px;
+        }
+        .chartForMonth{
+            position: absolute;
+            top: 1260px;
+            left: 600px;
+        }
+        .chartForYear{
+            position: absolute;
+            top: 1855px;
+            left: 600px;
+        }
+    </style>
+
+    <div id = "chartDayOnDay"></div>
+    <div id = "chartMonthOnMonth"></div>
+    <div id = "chartYearOnYear"></div>
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    <!-- <script src="{{ url_for('static', filename='chart.js') }}"></script> -->
+    <script>
+        function validateForm() {
+            var strategy = document.getElementById('trading_strategy').value;
+            var startDate = document.getElementById('start_date').value;
+            var endDate = document.getElementById('end_date').value;
+
+            if (strategy === "" || startDate === "" || endDate === "") {
+                alert("Please fill in all details.");
+                return false;
+            }
+            // Check if start_date is greater than end_date
+            if (startDate >= endDate) {
+                alert("Start date must be less than the end date.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>ALGO TRADIFY</h1>
+    <p id="historical_performance">Strategy Historical Performance</p>
+    <!-- We will make a drop down option to select the trading strategy -->
+    <form action="/" method="post" id="trade_strat" onsubmit="return validateForm();">
+        <label for="trading_strategy">Name of the strategy </label>
+        <select name="trading_strategy" id="trading_strategy" required>
+            <option value="" disabled selected>-- Select the strategy --</option>
+            <option value="SMA Option Buy">SMA Option Buy</option>
+            <option value="Supertrend Option Buy">Supertrend Option Buy</option>
+            <!-- <option value="option3"></option> -->
+        </select>
+        <label for="source">Orderbook Location</label>
+        <select name="source" id="source">
+            <option value="" disabled selected>-- Select the Location --</option>
+            <option value="local">Local</option>
+            <option value="gdrive">Google Drive</option>
+            <option value="s3">S3</option>
+            <option value="sql">Azure SQL</option>
+            <!-- <option value="option3"></option> -->
+        </select>
+        <label for="chart_pattern">Chart Metric Pattern</label>
+        <select name="chart_pattern" id="chart_pattern">
+            <option value="" disabled selected>-- Select the Location --</option>
+            <option value="sma">SMA</option>
+            <option value="supertrend">Supertrend</option>
+            <!-- <option value="option3"></option> -->
+        </select>
+        <label for="chart_data_location">Chart Data Location</label>
+        <select name="chart_data_location" id="chart_data_location">
+            <option value="" disabled selected>-- Select the Location --</option>
+            <option value="local">Local</option>
+            <option value="gdrive">Google Drive</option>
+            <option value="s3">S3</option>
+            <option value="sql">Azure SQL</option>
+            <!-- <option value="option3"></option> -->
+        </select>
+        <h3>Timeframe of execution:</h3>
+        <div>
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date" id="start_date" required>
+            
+            <label for="end_date">End Date:</label>
+            <input type="date" name="end_date" id="end_date" required>
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

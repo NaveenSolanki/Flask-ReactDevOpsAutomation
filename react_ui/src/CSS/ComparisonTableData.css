@@ -1,0 +1,84 @@
+.comparison-input-form {
+    width: 95%;
+    overflow: scroll;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.comparison-input-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.comparison-input-form select,
+.comparison-input-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.comparison-input-form button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.comparison-input-form button:hover {
+    background-color: #0056b3;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.comparison-table {
+    margin-top: 20px;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.comparison-table th {
+    background-color: #f2f2f2;
+}
+
+.comparison-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+@media only screen and (max-width: 1200px) {
+    .comparison-input-form {
+        width: 90%;
+        margin: 0 auto;
+        padding: 15px;
+    }
+
+    .comparison-input-form select,
+    .comparison-input-form button {
+        font-size: 14px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 6px;
+    }
+}

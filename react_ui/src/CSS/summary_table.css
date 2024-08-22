@@ -1,0 +1,106 @@
+/* SummaryTable.css */
+
+/* Style for the form container */
+.summary-input-form {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.summary-input-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.summary-input-form select,
+.summary-input-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.summary-input-form button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.summary-input-form button:hover {
+    background-color: #0056b3;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+/* Style for table container */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    margin-top: 20px;
+}
+
+/* Style for table */
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style for table headers */
+.table-container th {
+    background-color: #f2f2f2;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Style for table data rows */
+.table-container tr {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Style for table data cells */
+.table-container td {
+    padding: 10px 15px;
+}
+
+/* Highlight the first column */
+.table-container td:first-child {
+    font-weight: bold;
+}
+
+/* Style for alternate row background color */
+.table-container tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Hover effect on table rows */
+.table-container tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Responsive Styling */
+@media only screen and (max-width: 1200px) {
+    .summary-input-form {
+        padding: 15px;
+    }
+
+    .summary-input-form select,
+    .summary-input-form button {
+        font-size: 14px;
+    }
+
+    .table-container th,
+    .table-container td {
+        padding: 8px 10px;
+    }
+}

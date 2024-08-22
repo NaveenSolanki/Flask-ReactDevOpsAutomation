@@ -1,0 +1,58 @@
+.ComparisonTable {
+    margin-top: 20px;
+}
+
+.ComparisonTable h2 {
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ComparisonTable table {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.ComparisonTable th,
+.ComparisonTable td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.ComparisonTable th {
+    background-color: #f2f2f2;
+}
+
+.ComparisonTable tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Responsive Styling */
+@media only screen and (max-width: 1200px) {
+    .ComparisonTable h2 {
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .ComparisonTable table {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .ComparisonTable th,
+    .ComparisonTable td {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .ComparisonTable h2 {
+        font-size: 18px;
+    }
+    .trade-table .day-table .week-table .month-table .year-table{
+        overflow-x: auto;
+        margin: 0 -10px;
+    }
+}

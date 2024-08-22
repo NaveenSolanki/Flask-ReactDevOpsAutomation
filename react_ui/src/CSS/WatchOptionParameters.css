@@ -1,0 +1,43 @@
+.watch-params-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    }
+    
+    .loading {
+    text-align: center;
+    }
+    
+    .error {
+    color: red;
+    font-weight: bold;
+    }
+    
+    .watch-params-table-container {
+    overflow-x: auto;
+    }
+    
+    .watch-params-table {
+    background-color: rgb(233, 254, 255);
+    width: 100%;
+    border-collapse: collapse;
+    }
+    
+    .watch-params-table th,
+    .watch-params-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    }
+    
+    .watch-params-table th {
+    background-color: #aaaaaa;
+    color: #000000;
+    }
+    
+    .watch-params-table tbody tr:hover {
+    background-color: #f5f5f5;
+    }
+      

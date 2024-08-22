@@ -1,0 +1,1 @@
+flask_flash_secret_key = "naveensolanki"

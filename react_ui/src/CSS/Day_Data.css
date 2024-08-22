@@ -1,0 +1,74 @@
+/* Day_Data.css */
+
+/* Container styles */
+/* .chartForDay{
+  height: 600px;
+  width: 1400px;
+} */
+.day-data-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #b8fcf6;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Apply shadow to simulate depth */
+    perspective: 1000px; /* Apply perspective to create 3D effect */
+  }
+  
+  /* Table container styles */
+  .day-table-container {
+    flex: 1;
+  }
+  
+  /* Chart container styles */
+  .day-chart-container {
+    margin-left: 20px;
+  }
+  
+  /* Table styles */
+  .day_table {
+    background-color: azure;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .day_table th,
+  .day_table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .day_table th {
+    background-color: #343a40;
+    color: #fff;
+  }
+  
+  .day_table tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Responsive styling */
+  @media only screen and (max-width: 992px) {
+    .day-data-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .day-table-container{
+      width: 100%;
+    }
+    .day-chart-container {
+      margin-top: 20px;
+      margin-left: 0;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .day-data-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .day-table-container{
+      width: 100%;
+    }
+  }

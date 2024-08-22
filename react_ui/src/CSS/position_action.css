@@ -1,0 +1,74 @@
+/* positionAction.css */
+
+/* Position Action component */
+.position-action {
+    margin-bottom: 20px;
+    overflow: scroll;
+}
+
+.position-action h2 {
+    margin-bottom: 10px;
+}
+
+/* Table */
+.position-action table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.position-action th, .position-action td {
+    border: 1px solid #b9b9b9;
+    padding: 8px;
+    text-align: left;
+}
+
+.position-action th {
+    background-color: #ffffff;
+}
+
+/* Select Dropdown */
+.position-action select {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Input Text */
+.position-action input[type="text"] {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Delete Button */
+.position-action__delete {
+    background-color: #f44336; /* Red color */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.position-action__delete:hover {
+    background-color: #d32f2f; /* Darker shade of red on hover */
+}
+
+/* Add Row Button */
+.position-action__add-row {
+    margin-top: 10px;
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.position-action__add-row:hover {
+    background-color: #45a049; /* Darker shade of green on hover */
+}

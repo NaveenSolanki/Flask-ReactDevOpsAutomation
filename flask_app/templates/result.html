@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradify</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+        h1 {
+            margin: 0;
+            padding: 20px 0;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            background-color: #00e1ff;
+        }
+        h2{
+            font-weight: bold;
+            border-top: 2px solid #ccc;
+            border-bottom: 2px solid #ccc;
+            padding: 10px 0;
+            color: #414141;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);    
+            background-color: #c6c6c6;
+        }
+        #historical_performance{
+            margin: 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+            background-color: #41dc9b;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #chosen_options{
+            margin: 0;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            background-color: #41dc9b;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        table {
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border: 1px solid #2e2e2e;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #2e2e2e;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(odd) {
+            background-color: #eae8e8;
+        }
+        tr:hover {
+            background-color: #a29f9f;
+        }
+
+        .chartForDay{
+            position: absolute;
+            top: 320px;
+            left: 600px;
+        }
+        .chartForMonth{
+            position: absolute;
+            top: 920px;
+            left: 600px;
+        }
+        .chartForYear{
+            position: absolute;
+            top: 1505px;
+            left: 600px;
+        }
+    </style>
+
+    <div id = "chartDayOnDay"></div>
+    <div id = "chartMonthOnMonth"></div>
+    <div id = "chartYearOnYear"></div>
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    <script src="{{ url_for('static', filename='chart.js') }}"></script>
+    <script>
+        function validateForm() {
+            var strategy = document.getElementById('trading_strategy').value;
+            var startDate = document.getElementById('start_date').value;
+            var endDate = document.getElementById('end_date').value;
+
+            if (strategy === "" || startDate === "" || endDate === "") {
+                alert("Please fill in all details.");
+                return false;
+            }
+            // Check if start_date is greater than end_date
+            if (startDate >= endDate) {
+                alert("Start date must be less than the end date.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>ALGO TRADIFY</h1>
+    <p id="historical_performance">Strategy Historical Performance</p>
+    <p id="chosen_options">Selected Strategy: {{strategy}} <br>
+        Starting Date: {{start_date}} <br>
+        Ending Date: {{end_date}} <br>
+        Orderbook Location: {{source}} <br>
+        Chart Pattern Selected: {{chart_pattern}}
+    </p>
+    
+    <!-- Day on Day View  -->
+    {% if strategy %} 
+        <h2>Day on Day View</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Index</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in table_data_day %}
+                    <tr>
+                        <td>{{ row[''] }}</td>
+                        <td>{{ row['Index'] }}</td>
+                        <td>{{ row['Options'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="chartForDay">
+            <script>
+                const chart_ptn_day = "{{ chart_pattern }}";
+                // Call the displayChart function for Day on Day View
+                document.addEventListener('DOMContentLoaded', function () {
+                    displayChartDay('chartDayOnDay', chart_ptn_day);
+                });
+            </script>
+        </div>    
+    {% endif %} 
+
+    <br><br><br><br><br><br><br><br><br><br>
+    <!-- Month on Month View -->
+    {% if strategy %}
+        <h2>Month on Month View</h2>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Index</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in table_data_month %}
+                    <tr>
+                        <td>{{ row[''] }}</td>
+                        <td>{{ row['Index'] }}</td>
+                        <td>{{ row['Options'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <script>
+            const chart_ptn_month = "{{ chart_pattern }}";
+            // Call the displayChart function for Month on Month View
+            document.addEventListener('DOMContentLoaded', function () {
+                displayChartMonth('chartMonthOnMonth', chart_ptn_month);
+            });
+        </script>
+    {% endif %}
+
+    <br><br><br><br><br><br><br><br><br><br>
+    <!-- Year on Year View -->
+    {% if strategy %}
+        <h2>Year on Year View</h2>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Index</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in table_data_year %}
+                    <tr>
+                        <td>{{ row[''] }}</td>
+                        <td>{{ row['Index'] }}</td>
+                        <td>{{ row['Options'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <script>
+            const chart_ptn_year = "{{ chart_pattern }}";
+            // Call the displayChart function for Year on Year View
+            document.addEventListener('DOMContentLoaded', function () {
+                displayChartYear('chartYearOnYear', chart_ptn_year);
+            });
+        </script>
+    {% endif %}
+    
+</body>
+</html>
